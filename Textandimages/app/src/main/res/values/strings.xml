@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">"Text and images "</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="BtnSwitch">Switch Images</string>
+    <string name="debugCheckBox">Debug?</string>
+    <string name="opcion_1">opcion1</string>
+    <string name="opcion_2">opcion2</string>
+</resources>
