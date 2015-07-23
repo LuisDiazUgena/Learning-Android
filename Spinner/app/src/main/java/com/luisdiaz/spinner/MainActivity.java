@@ -12,11 +12,11 @@ import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
-    final String[] datos = {"Elem1","Elem2","Elem3","Elem4","Elem5"};
+
     private Spinner cmbOpciones;
     private TextView lblMensaje;
 
-    ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,datos);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +24,9 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
         cmbOpciones = (Spinner) findViewById(R.id.CmbOpciones);
         lblMensaje = (TextView) findViewById(R.id.lblMensaje);
+
+        final String[] datos = {"Elem1","Elem2","Elem3","Elem4","Elem5"};
+        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,datos);
 
         adaptador.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         cmbOpciones.setAdapter(adaptador);
