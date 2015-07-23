@@ -3,8 +3,7 @@
 package com.luisdiaz.simple_bt;
 
 
-import android.app.Activity;
-import android.support.v7.app.*;
+import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -33,7 +32,7 @@ import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 
 
-public class MainActivity extends Activity {
+public class MainActivity extends ActionBarActivity {
 
     //Debug variables
     private static final String TAG = "simpleBT";
