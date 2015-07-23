@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+    <!-- From: file:/home/luis-diaz/Escritorio/git/droid2ino/droid2ino/droid2ino/build/intermediates/exploded-aar/com.android.support/appcompat-v7/20.0.0/res/values-es/values.xml -->
+    <eat-comment/>
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Ir a la pantalla de inicio"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"Desplazarse hacia arriba"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"Más opciones"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"Listo"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"Ver todo"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"Seleccionar una aplicación"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"Borrar consulta"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"Consulta"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"Buscar"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"Enviar consulta"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"Búsqueda por voz"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Compartir con"</string>
+    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Compartir con %s"</string>
+    <!-- From: file:/home/luis-diaz/Escritorio/git/droid2ino/droid2ino/droid2ino/build/intermediates/bundles/debug/res/values-es/values.xml -->
+    <eat-comment/>
+    <string name="bluetooth_not_available">El Bluetooth no está disponible. Comprueba que tu dispositivo móvil soporta conexiones Bluetooth.</string>
+    <string name="bt_not_enabled">El Bluetooth no está activado. Necesitas activarlo para conectar con un dispositivo.</string>
+    <string name="button_scan">Buscar dispositivos</string>
+    <string name="connect">Conectar</string>
+    <string name="connected_to">"Conectado a "</string>
+    <string name="connecting_bluetooth_error">No fue posible conectar con el dispositivo</string>
+    <string name="connection_lost_error">Se perdió la conexión con el dispositivo</string>
+    <string name="disconnect">Desconectar</string>
+    <string name="discoverable">Hacer el dispositivo visible</string>
+    <string name="none_found">No se han encontrado dispositivos</string>
+    <string name="none_paired">No hay dispositivos emparejados</string>
+    <string name="not_connected">No estás conectado a ningún dispositivo</string>
+    <string name="scanning">Buscando dispositivos…</string>
+    <string name="select_device">Selecciona un dispositivo</string>
+    <string name="send">Enviar</string>
+    <string name="title_connected_to">Conectado a <ns1:g id="device_name">%1$s</ns1:g></string>
+    <string name="title_connecting">Conectando…</string>
+    <string name="title_not_connected">No conectado</string>
+    <string name="title_other_devices">Otros Dispositivos Disponibles</string>
+    <string name="title_paired_devices">Dispositivos Emparejados</string>
+</resources>

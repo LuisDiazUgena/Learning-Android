@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/home/luis-diaz/Escritorio/git/droid2ino/droid2ino/droid2ino/src/main/res/values-v14/styles.xml -->
+    <eat-comment/>
+    <style name="AppBaseTheme" parent="Theme.AppCompat">
+        <!-- API 14 theme customizations can go here. -->
+    </style>
+</resources>
