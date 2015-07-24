@@ -57,7 +57,7 @@ public class MainActivity extends ActionBarActivity {
                 //Alternativa 2:
                 String seleccion = ((TextView)v.findViewById(R.id.LblTitulo)).getText().toString();
 
-                opcionSeleccionada.setText("Opción seleccionada: "+seleccion);
+                opcionSeleccionada.setText("La opción seleccionada es: "+seleccion);
             }
         });
     }
