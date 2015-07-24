@@ -1,16 +1,35 @@
 package com.luisdiaz.listview;
 
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
 
     private ListView lstOpciones;
+    private TextView opcionSeleccionada;
+
+    private Titular[] datos = new Titular[]{
+            new Titular("Título 1", "Subtítulo largo 1"),
+            new Titular("Título 2", "Subtítulo largo 2"),
+            new Titular("Título 3", "Subtítulo largo 3"),
+            new Titular("Título 4", "Subtítulo largo 4"),
+            new Titular("Título 5", "Subtítulo largo 5"),
+            new Titular("Título 6", "Subtítulo largo 6"),
+            new Titular("Título 7", "Subtítulo largo 7"),
+            new Titular("Título 8", "Subtítulo largo 8"),
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,11 +37,29 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         lstOpciones = (ListView) findViewById(R.id.LstOpciones);
+        opcionSeleccionada = (TextView) findViewById(R.id.OpcionSeleccionada);
 
-        final String[] datos = new String[] {"elem1","elem2","elem3","elem4","elem5"};
-        ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,datos);
+        //final String[] datos = new String[] {"elem1","elem2","elem3","elem4","elem5"};
+        //ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,datos);
 
+        //Añadir una cabecera
+        View header = getLayoutInflater().inflate(R.layout.list_header,null);
+        lstOpciones.addHeaderView(header);
+        //Crear el adaptador
+        final AdaptadorTitulares adaptador = new AdaptadorTitulares(this,datos);
         lstOpciones.setAdapter(adaptador);
+
+        lstOpciones.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> a, View v, int position, long id) {
+                //Alternativa 1:
+                //String seleccion = ((Titular)a.getItemAtPosition(position).getTitulo());
+                //Alternativa 2:
+                String seleccion = ((TextView)v.findViewById(R.id.LblTitulo)).getText().toString();
+
+                opcionSeleccionada.setText("Opción seleccionada: "+seleccion);
+            }
+        });
     }
 
     @Override
@@ -46,4 +83,25 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    class AdaptadorTitulares extends ArrayAdapter<Titular>{
+        public AdaptadorTitulares(Context context,Titular[] datos){
+            super(context,R.layout.listitem_titular,datos);
+        }
+
+        public View getView(int position, View convertView, ViewGroup parent){
+            LayoutInflater inflater = LayoutInflater.from(getContext());
+            View item = inflater.inflate(R.layout.listitem_titular, null);
+
+            TextView lblTitulo = (TextView) item.findViewById(R.id.LblTitulo);
+            lblTitulo.setText(datos[position].getTitulo());
+
+            TextView lblSubtitulo = (TextView) item.findViewById(R.id.LblSubtitulo);
+            lblSubtitulo.setText(datos[position].getSubtitulo());
+
+            return item;
+        }
+    }
+
+
 }
