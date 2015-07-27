@@ -10,6 +10,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,9 +25,13 @@ public class MainActivity extends ActionBarActivity {
     private TextView lblSpeed, lblSetSpeed;
     private EditText inputSpeed;
     private ImageView image;
+    private CheckBox checkBoxGPS,checkBoxNetwork;
 
     private float gpsSpeed=0,userSpeed=0;
     private boolean isPlayClicked=false;
+
+    private LocationManager locationManager;
+    private LocationListener locationListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,31 +39,37 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
 
         btnStart = (Button) findViewById(R.id.BtnStart);
+
         lblSpeed = (TextView) findViewById(R.id.LblSpeed);
         lblSetSpeed = (TextView) findViewById(R.id.LblSetSpeed);
         inputSpeed = (EditText) findViewById(R.id.InputSpeed);
+
         image = (ImageView) findViewById(R.id.Image);
+
+
+        checkBoxGPS =(CheckBox)findViewById(R.id.CheckBoxGPS);
+        checkBoxNetwork = (CheckBox) findViewById(R.id.CheckBoxNetwork);
+
 
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                isPlayClicked=!isPlayClicked;
-                if(isPlayClicked){
+                isPlayClicked = !isPlayClicked;
+                if (isPlayClicked) {
                     btnStart.setText(R.string.BtnStop);
                     lblSetSpeed.setText(inputSpeed.getText());
-                }else{
+                } else {
                     btnStart.setText(R.string.BtnStart);
                     lblSetSpeed.setText(R.string.setSpeed);
                 }
 
             }
         });
-        //Acquire a reference to system location manager
-        LocationManager locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
+
 
         //Define a listener that responds to location updates
-        LocationListener locationListener = new LocationListener() {
+        locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
                 if(isPlayClicked) {
@@ -91,7 +102,26 @@ public class MainActivity extends ActionBarActivity {
             }
         };
 
-        locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,0,locationListener);
+        checkBoxGPS.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkBoxGPS.isChecked()) {
+                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
+                    checkBoxNetwork.setChecked(false);
+                }
+            }
+        });
+
+        checkBoxNetwork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkBoxNetwork.isChecked()) {
+                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+                    checkBoxGPS.setChecked(false);
+                }
+            }
+        });
+
 
     }
 

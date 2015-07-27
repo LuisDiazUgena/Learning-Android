@@ -27,8 +27,28 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/okimage" />
+        android:layout_centerHorizontal="true" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/InputSpeed">
+
+        <CheckBox
+            android:id="@+id/CheckBoxGPS"
+            android:text="@string/CkBoxGPS"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="true"/>
+        <CheckBox
+            android:id="@+id/CheckBoxNetwork"
+            android:text="@string/CkBoxNetwork"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:checked="false"/>
+    </LinearLayout>
+
     <EditText
         android:id="@+id/InputSpeed"
         android:hint="@string/typeHere"
@@ -36,6 +56,7 @@
         android:layout_above="@+id/BtnStart"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/BtnStart"
         android:text="@string/BtnStart"
