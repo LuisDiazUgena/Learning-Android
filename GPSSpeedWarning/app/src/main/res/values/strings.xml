@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">GPS Speed Warning</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="your_speed">Your current speed will appear here soon</string>
+    <string name="typeHere">Type here your top speed</string>
+    <string name="setSpeed">User-set speed will appear here</string>
+    <string name="BtnStart">Start</string>
+    <string name="BtnStop">Stop</string>
+</resources>
