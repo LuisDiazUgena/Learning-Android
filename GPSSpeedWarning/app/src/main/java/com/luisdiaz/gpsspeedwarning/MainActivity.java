@@ -25,7 +25,7 @@ public class MainActivity extends ActionBarActivity {
     private TextView lblSpeed, lblSetSpeed;
     private EditText inputSpeed;
     private ImageView image;
-    private CheckBox checkBoxGPS,checkBoxNetwork;
+    private CheckBox checkBoxGPS,checkBoxNetwork,checkboxUnits;
 
     private float gpsSpeed=0,userSpeed=0;
     private boolean isPlayClicked=false;
@@ -49,7 +49,7 @@ public class MainActivity extends ActionBarActivity {
 
         checkBoxGPS =(CheckBox)findViewById(R.id.CheckBoxGPS);
         checkBoxNetwork = (CheckBox) findViewById(R.id.CheckBoxNetwork);
-
+        checkboxUnits = (CheckBox) findViewById(R.id.CheckBoxUnits);
 
 
         btnStart.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +75,13 @@ public class MainActivity extends ActionBarActivity {
                 if(isPlayClicked) {
                     location.getLatitude();
                     gpsSpeed = location.getSpeed();
+                    if(!checkboxUnits.isChecked()){
+                        //Use SI
+                        gpsSpeed = gpsSpeed + (float)3.6; //To kmh
+                    }else{
+                        //Use Miles
+                        gpsSpeed = gpsSpeed * (float)2.23693629;//To miles
+                    }
                     lblSpeed.setText(Float.toString(gpsSpeed));
 
                     if (gpsSpeed > userSpeed) {
@@ -108,6 +115,7 @@ public class MainActivity extends ActionBarActivity {
                 if (checkBoxGPS.isChecked()) {
                     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
                     checkBoxNetwork.setChecked(false);
+                    lblSpeed.setText(R.string.your_speed_gps);
                 }
             }
         });
@@ -118,6 +126,7 @@ public class MainActivity extends ActionBarActivity {
                 if (checkBoxNetwork.isChecked()) {
                     locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
                     checkBoxGPS.setChecked(false);
+                    lblSpeed.setText(R.string.your_speed_network);
                 }
             }
         });
