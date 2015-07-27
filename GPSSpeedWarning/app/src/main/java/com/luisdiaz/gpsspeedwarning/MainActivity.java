@@ -115,7 +115,7 @@ public class MainActivity extends ActionBarActivity {
                 if (checkBoxGPS.isChecked()) {
                     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
                     checkBoxNetwork.setChecked(false);
-                    lblSpeed.setText(R.string.your_speed_gps);
+                    //lblSpeed.setText(R.string.your_speed_gps);
                 }
             }
         });
@@ -124,9 +124,13 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 if (checkBoxNetwork.isChecked()) {
+                    /*
+
+                    Commented to avoid closing (need to fix it)
                     locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
+                    */
                     checkBoxGPS.setChecked(false);
-                    lblSpeed.setText(R.string.your_speed_network);
+                    //lblSpeed.setText(R.string.your_speed_network);
                 }
             }
         });
