@@ -10,7 +10,7 @@
         android:textSize="50dp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:text="@string/your_speed_gps"
+        android:text="@string/your_speed_network"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         />
@@ -33,20 +33,6 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/InputSpeed">
 
-        <CheckBox
-            android:id="@+id/CheckBoxGPS"
-            android:text="@string/CkBoxGPS"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"/>
-        <CheckBox
-            android:id="@+id/CheckBoxNetwork"
-            android:text="@string/CkBoxNetwork"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="false"/>
         <CheckBox
             android:id="@+id/CheckBoxUnits"
             android:text="@string/Units"

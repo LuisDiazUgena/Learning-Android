@@ -1,9 +1,11 @@
 package com.luisdiaz.gpsspeedwarning;
 
 import android.content.Context;
+import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.location.LocationProvider;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,6 +18,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -25,13 +29,13 @@ public class MainActivity extends ActionBarActivity {
     private TextView lblSpeed, lblSetSpeed;
     private EditText inputSpeed;
     private ImageView image;
-    private CheckBox checkBoxGPS,checkBoxNetwork,checkboxUnits;
+    private CheckBox checkboxUnits;
 
     private float gpsSpeed=0,userSpeed=0;
     private boolean isPlayClicked=false;
 
-    private LocationManager locationManager;
     private LocationListener locationListener;
+    private LocationManager locationManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,11 +50,7 @@ public class MainActivity extends ActionBarActivity {
 
         image = (ImageView) findViewById(R.id.Image);
 
-
-        checkBoxGPS =(CheckBox)findViewById(R.id.CheckBoxGPS);
-        checkBoxNetwork = (CheckBox) findViewById(R.id.CheckBoxNetwork);
         checkboxUnits = (CheckBox) findViewById(R.id.CheckBoxUnits);
-
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,11 +62,13 @@ public class MainActivity extends ActionBarActivity {
                 } else {
                     btnStart.setText(R.string.BtnStart);
                     lblSetSpeed.setText(R.string.setSpeed);
+                    locationManager.removeUpdates(locationListener);
                 }
 
             }
         });
 
+        locationManager = (LocationManager)getSystemService(LOCATION_SERVICE);
 
         //Define a listener that responds to location updates
         locationListener = new LocationListener() {
@@ -79,7 +81,7 @@ public class MainActivity extends ActionBarActivity {
                         //Use SI
                         gpsSpeed = gpsSpeed + (float)3.6; //To kmh
                     }else{
-                        //Use Miles
+                        //Use Imperial
                         gpsSpeed = gpsSpeed * (float)2.23693629;//To miles
                     }
                     lblSpeed.setText(Float.toString(gpsSpeed));
@@ -107,34 +109,10 @@ public class MainActivity extends ActionBarActivity {
             public void onProviderDisabled(String provider) {
 
             }
+
         };
 
-        checkBoxGPS.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkBoxGPS.isChecked()) {
-                    locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
-                    checkBoxNetwork.setChecked(false);
-                    //lblSpeed.setText(R.string.your_speed_gps);
-                }
-            }
-        });
-
-        checkBoxNetwork.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkBoxNetwork.isChecked()) {
-                    /*
-
-                    Commented to avoid closing (need to fix it)
-                    locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, locationListener);
-                    */
-                    checkBoxGPS.setChecked(false);
-                    //lblSpeed.setText(R.string.your_speed_network);
-                }
-            }
-        });
-
+        locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,1000,0,locationListener);
 
     }
 
