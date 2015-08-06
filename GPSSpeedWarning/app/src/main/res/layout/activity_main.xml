@@ -21,6 +21,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+
     <ImageView
         android:id="@+id/Image"
         android:layout_below="@+id/LblSetSpeed"
@@ -28,19 +29,23 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
-    <LinearLayout
+
+    <TextView
+        android:id="@+id/Status"
+        android:text="@string/status"
+        android:layout_above="@+id/CheckBoxUnits"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/InputSpeed">
+        android:layout_marginBottom="@dimen/abc_action_bar_progress_bar_size"
+        />
 
-        <CheckBox
-            android:id="@+id/CheckBoxUnits"
-            android:text="@string/Units"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="false"/>
-    </LinearLayout>
+    <CheckBox
+        android:id="@+id/CheckBoxUnits"
+        android:layout_above="@+id/InputSpeed"
+        android:text="@string/Units"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"/>
 
     <EditText
         android:id="@+id/InputSpeed"

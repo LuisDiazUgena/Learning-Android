@@ -26,7 +26,7 @@ public class MainActivity extends ActionBarActivity {
     Context context;
 
     private Button btnStart;
-    private TextView lblSpeed, lblSetSpeed;
+    private TextView lblSpeed, lblSetSpeed,lblStatus;
     private EditText inputSpeed;
     private ImageView image;
     private CheckBox checkboxUnits;
@@ -46,6 +46,8 @@ public class MainActivity extends ActionBarActivity {
 
         lblSpeed = (TextView) findViewById(R.id.LblSpeed);
         lblSetSpeed = (TextView) findViewById(R.id.LblSetSpeed);
+        lblStatus = (TextView) findViewById(R.id.Status);
+
         inputSpeed = (EditText) findViewById(R.id.InputSpeed);
 
         image = (ImageView) findViewById(R.id.Image);
@@ -97,6 +99,8 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onStatusChanged(String provider, int status, Bundle extras) {
+
+                lblStatus.setText(R.string.status + ": "+status);
 
             }
 
