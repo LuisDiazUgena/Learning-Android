@@ -8,7 +8,6 @@ import android.graphics.Paint;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 
@@ -34,24 +33,28 @@ public class ArcSpeed extends View{
 
         w = width;
         h = height/2;
-
+        margin = 10;
         p = new Paint();
         //x,y,width, height
-        rectF = new RectF(0, 0,w, w);
+        rectF = new RectF(margin, margin,w, w);
+
     }
 
     @Override
     protected void onDraw(Canvas canvas){
 
         p.setColor(Color.BLACK);
-        canvas.drawArc (rectF, 0, -90, true, p);
+        //canvas.drawRect(margin, margin, w, 200, p);
+        Paint p2 = new Paint();
+        p.setColor(Color.YELLOW);
+        canvas.drawText("150",w,w,p);
     }
 
-    @Override
-    protected void onSizeChanged(int w, int h, int oldW,int oldH){
-
+    public void setSpeed(Canvas canvas, float speed){
+        p.setColor(Color.RED);
+        float wSpeed = (speed * w)/150;
+        canvas.drawRect(margin,margin,wSpeed,200,p);
     }
-
 
 
 }
