@@ -6,6 +6,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -55,6 +56,7 @@ public class MainActivity extends ActionBarActivity {
                 if (isPlayClicked) {
                     btnStart.setText(R.string.BtnStop);
                     lblSetSpeed.setText(inputSpeed.getText());
+                    lblSetSpeed.setTextSize(50);
                 } else {
                     btnStart.setText(R.string.BtnStart);
                     lblSetSpeed.setText(R.string.setSpeed);
@@ -81,6 +83,7 @@ public class MainActivity extends ActionBarActivity {
                         gpsSpeed = gpsSpeed * (float)2.23693629;//To miles
                     }
                     lblSpeed.setText(Float.toString(gpsSpeed));
+                    lblSpeed.setTextSize(TypedValue.COMPLEX_UNIT_DIP,100);
 
                     if (gpsSpeed > userSpeed) {
                         image.setImageResource(R.drawable.red_warning);
@@ -88,7 +91,7 @@ public class MainActivity extends ActionBarActivity {
                         image.setImageResource(R.drawable.okimage);
                     }
                 }
-                //Toast.makeText(context,"Current speed: "+location.getSpeed(),Toast.LENGTH_SHORT).show();
+
             }
 
             @Override
